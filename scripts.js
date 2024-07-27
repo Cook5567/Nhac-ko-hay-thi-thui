@@ -2,7 +2,9 @@ const playButton = document.getElementById('play');
 const prevButton = document.getElementById('prev');
 const nextButton = document.getElementById('next');
 const albumCover = document.getElementById('albumCover');
+const volumeBtn = document.getElementById('volume-btn');
 const volumeSlider = document.getElementById('volume');
+const seekbar = document.getElementById('seekbar');
 const songTitle = document.getElementById('songTitle');
 const artist = document.getElementById('artist');
 const playlist = document.getElementById('playlist');
@@ -66,8 +68,22 @@ playButton.addEventListener('click', togglePlay);
 prevButton.addEventListener('click', prevSong);
 nextButton.addEventListener('click', nextSong);
 
+volumeBtn.addEventListener('click', () => {
+    volumeSlider.classList.toggle('hidden');
+});
+
 volumeSlider.addEventListener('input', (e) => {
     audio.volume = e.target.value;
+});
+
+seekbar.addEventListener('input', (e) => {
+    const seekTime = audio.duration * (seekbar.value / 100);
+    audio.currentTime = seekTime;
+});
+
+audio.addEventListener('timeupdate', () => {
+    const progress = (audio.currentTime / audio.duration) * 100;
+    seekbar.value = progress;
 });
 
 playlist.addEventListener('click', (e) => {
