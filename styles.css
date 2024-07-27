@@ -1,24 +1,78 @@
 body {
-    background: linear-gradient(to right, #e66465, #9198e5);
+    background: #121212;
+    color: #fff;
     font-family: 'Arial', sans-serif;
     display: flex;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
     margin: 0;
 }
 
 .container {
-    background: #fff;
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    background: #000;
+    width: 20%;
+    padding: 20px;
+}
+
+.sidebar h1 {
+    color: #1DB954;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.sidebar li:hover, .sidebar li.active {
+    background: #1DB954;
+}
+
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background: #282828;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.header input {
+    width: 50%;
+    padding: 10px;
+    border: none;
     border-radius: 20px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    max-width: 400px;
-    text-align: center;
+    font-size: 16px;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .player {
+    background: #282828;
     padding: 20px;
+    border-radius: 20px;
+    text-align: center;
 }
 
 .cover img {
@@ -52,7 +106,7 @@ body {
 }
 
 .btn {
-    background: #e66465;
+    background: #1DB954;
     border: none;
     color: white;
     font-size: 20px;
@@ -63,7 +117,7 @@ body {
 }
 
 .btn:hover {
-    background: #9198e5;
+    background: #1ED760;
     transform: scale(1.1);
 }
 
@@ -75,6 +129,8 @@ input[type="range"] {
 .playlist {
     padding: 20px;
     text-align: left;
+    background: #282828;
+    border-radius: 20px;
 }
 
 .playlist ul {
@@ -94,6 +150,6 @@ input[type="range"] {
 }
 
 .playlist li.active {
-    background: #e66465;
+    background: #1DB954;
     color: white;
-  }
+    }
