@@ -79,8 +79,7 @@ playlist.addEventListener('click', (e) => {
 
 document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'hidden' && isPlaying) {
-        // Bạn có thể thêm mã để xử lý khi tab bị ẩn, ví dụ, hiển thị thông báo hoặc thay đổi trạng thái.
-        // Ở đây, chúng tôi sẽ để lại âm thanh phát trong nền.
+        // Phát nhạc nền khi tab bị ẩn
     }
 });
 
