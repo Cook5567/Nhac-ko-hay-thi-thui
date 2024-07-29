@@ -1,102 +1,39 @@
-const playButton = document.getElementById('play');
-const prevButton = document.getElementById('prev');
-const nextButton = document.getElementById('next');
-const albumCover = document.getElementById('albumCover');
-const volumeBtn = document.getElementById('volume-btn');
-const volumeSlider = document.getElementById('volume');
-const seekbar = document.getElementById('seekbar');
-const songTitle = document.getElementById('songTitle');
-const artist = document.getElementById('artist');
-const playlist = document.getElementById('playlist');
-let audio = new Audio();
-let isPlaying = false;
-let currentSongIndex = 0;
+// script.js
+document.addEventListener('DOMContentLoaded', () => {
+    // Kích hoạt hiệu ứng khi trang được tải
+    document.body.classList.add('loaded');
 
-const songs = Array.from(playlist.children);
+    const playButton = document.querySelector('.play');
+    const pauseButton = document.querySelector('.pause');
+    const volumeSlider = document.querySelector('.volume-slider');
+    const trackInfo = document.querySelector('.track-info');
 
-function loadSong(songElement) {
-    const song = songElement.getAttribute('data-song');
-    const title = songElement.getAttribute('data-title');
-    const artistName = songElement.getAttribute('data-artist');
-    
-    songTitle.textContent = title;
-    artist.textContent = artistName;
-    audio.src = song;
-}
+    let audio = new Audio('path/to/your/song.mp3'); // Thay đổi đường dẫn đến file nhạc của bạn
 
-function playSong() {
-    playButton.innerHTML = '<i class="fas fa-pause"></i>';
-    albumCover.style.animation = 'spin 4s linear infinite';
-    audio.play();
-    isPlaying = true;
-}
+    playButton.addEventListener('click', () => {
+        audio.play();
+        playButton.style.display = 'none';
+        pauseButton.style.display = 'inline';
+    });
 
-function pauseSong() {
-    playButton.innerHTML = '<i class="fas fa-play"></i>';
-    albumCover.style.animation = 'none';
-    audio.pause();
-    isPlaying = false;
-}
+    pauseButton.addEventListener('click', () => {
+        audio.pause();
+        playButton.style.display = 'inline';
+        pauseButton.style.display = 'none';
+    });
 
-function togglePlay() {
-    if (isPlaying) {
-        pauseSong();
-    } else {
-        playSong();
-    }
-}
+    volumeSlider.addEventListener('input', (event) => {
+        audio.volume = event.target.value / 100;
+    });
 
-function changeSong(index) {
-    currentSongIndex = index;
-    songs.forEach(song => song.classList.remove('active'));
-    songs[currentSongIndex].classList.add('active');
-    loadSong(songs[currentSongIndex]);
-    playSong();
-}
+    audio.addEventListener('timeupdate', () => {
+        trackInfo.querySelector('.current-time').textContent = formatTime(audio.currentTime);
+        trackInfo.querySelector('.duration').textContent = formatTime(audio.duration);
+    });
 
-function nextSong() {
-    currentSongIndex = (currentSongIndex + 1) % songs.length;
-    changeSong(currentSongIndex);
-}
-
-function prevSong() {
-    currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
-    changeSong(currentSongIndex);
-}
-
-playButton.addEventListener('click', togglePlay);
-prevButton.addEventListener('click', prevSong);
-nextButton.addEventListener('click', nextSong);
-
-volumeBtn.addEventListener('click', () => {
-    volumeSlider.classList.toggle('hidden');
-});
-
-volumeSlider.addEventListener('input', (e) => {
-    audio.volume = e.target.value;
-});
-
-seekbar.addEventListener('input', (e) => {
-    const seekTime = audio.duration * (seekbar.value / 100);
-    audio.currentTime = seekTime;
-});
-
-audio.addEventListener('timeupdate', () => {
-    const progress = (audio.currentTime / audio.duration) * 100;
-    seekbar.value = progress;
-});
-
-playlist.addEventListener('click', (e) => {
-    if (e.target.tagName === 'LI') {
-        const index = songs.indexOf(e.target);
-        changeSong(index);
+    function formatTime(seconds) {
+        const minutes = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
     }
 });
-
-document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'hidden' && isPlaying) {
-        // Phát nhạc nền khi tab bị ẩn
-    }
-});
-
-loadSong(songs[currentSongIndex]);
