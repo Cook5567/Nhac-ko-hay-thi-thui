@@ -3,37 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trình phát nhạc</title>
+    <title>Music Player</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <div class="player">
-            <div class="cover">
-                
-            </div>
-            <div class="info">
-                <h2 id="songTitle">Tên bài hát</h2>
-                <p id="artist">Tên nghệ sĩ</p>
-            </div>
-            <div class="controls">
-                <button id="prev" class="btn"><i class="fas fa-backward"></i></button>
-                <button id="play" class="btn"><i class="fas fa-play"></i></button>
-                <button id="next" class="btn"><i class="fas fa-forward"></i></button>
-            </div>
-            
+        <!-- Playlist Section -->
+        <div class="playlist-section">
+            <h2>Danh sách phát</h2>
+            <div class="playlists">
+                <!-- Thêm các danh sách phát ở đây -->
             </div>
         </div>
-        <div class="playlist">
-                 <h3>Danh sách phát</h3>
-                 <ul id="playlist">
-                     <li class="active" data-song="5_6332409616973959318" data-title="Bài hát 1" data-artist="Nghệ sĩ 1">Bài hát 1 - Nghệ sĩ 1</li>
-                     <li data-song="5_6332409616973959320" data-title="Bài hát 2" data-artist="Nghệ sĩ 2">Bài hát 2 - Nghệ sĩ 2</li>
-                     <li data-song="5_6332409616973959381" data-title="Bài hát 3" data-artist="Nghệ sĩ 3">Bài hát 3 - Nghệ sĩ 3</li>
-            </ul>
+
+        <!-- Player Control Section -->
+        <div class="player-section">
+            <div class="controls">
+                <button class="prev">⏮️</button>
+                <button class="play">▶️</button>
+                <button class="pause" style="display: none;">⏸️</button>
+                <button class="next">⏭️</button>
+            </div>
+            <div class="volume">
+                <input type="range" min="0" max="100" value="50" class="volume-slider">
+            </div>
+            <div class="shuffle-repeat">
+                <button class="shuffle">🔀</button>
+                <button class="repeat">🔁</button>
+            </div>
+            <div class="playlist-controls">
+                <button class="show-playlist">Danh sách phát</button>
+            </div>
+            <div class="track-info">
+                <span class="current-time">0:00</span> / <span class="duration">0:00</span>
+            </div>
         </div>
     </div>
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <script src="scripts.js"></script>
+
+    <script src="script.js"></script>
 </body>
-                    </html>
+    </html>
