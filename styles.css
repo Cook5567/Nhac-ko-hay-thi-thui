@@ -1,119 +1,79 @@
-/* styles.css */
-
-/* Màu nền của toàn bộ trang */
 body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #fff;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-/* Hiệu ứng khởi đầu */
-.container {
+.player-container {
+    width: 360px;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.player-header {
     display: flex;
     justify-content: space-between;
-    padding: 20px;
-    opacity: 0;
-    transform: scale(1.2);
-    transition: opacity 1s ease-out, transform 1s ease-out;
-    background-color: #ffffff;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-body.loaded .container {
-    opacity: 1;
-    transform: scale(1);
-}
-
-/* Phần danh sách phát */
-.playlist-section {
-    width: 30%;
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    overflow-y: auto;
+    align-items: center;
+    padding: 10px;
+    background-color: #282828;
 }
 
 .playlist {
-    margin-bottom: 20px;
-}
-
-.playlist h3 {
-    margin: 0;
-    color: #333;
-}
-
-.playlist ul {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
-.playlist li {
-    padding: 8px 0;
-    color: #555;
-    border-bottom: 1px solid #ddd;
-}
-
-/* Phần điều khiển phát nhạc */
-.player-section {
-    width: 65%;
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-}
-
-.controls button, .volume-slider {
-    margin: 0 10px;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 5px;
+.playlist-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 10px;
+    border-bottom: 1px solid #333;
+}
+
+.song-info {
+    flex-grow: 1;
+    padding: 0 10px;
+}
+
+.play-button, .download-button, .search-button, .control-button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 18px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.controls button:hover, .volume-slider:hover {
-    background-color: #2980b9;
-    transform: scale(1.05);
+.current-song {
+    padding: 10px;
+    background-color: #282828;
 }
 
-.volume-slider {
-    width: 100%;
-    height: 5px;
-    background: #ddd;
-    border-radius: 5px;
-    cursor: pointer;
+.progress-container {
+    display: flex;
+    align-items: center;
 }
 
-.shuffle-repeat button {
-    background-color: #e74c3c;
+.current-time, .duration {
+    font-size: 12px;
 }
 
-.shuffle-repeat button:hover {
-    background-color: #c0392b;
+.progress-bar {
+    flex-grow: 1;
+    margin: 0 10px;
 }
 
-/* Hiệu ứng chữ */
-@keyframes textReveal {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-h2, h3 {
-    animation: textReveal 1s ease-out;
-}
-
-/* Hiệu ứng cho nút */
-.controls button:focus {
-    outline: none;
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
 }
