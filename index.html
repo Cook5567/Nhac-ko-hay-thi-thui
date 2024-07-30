@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,52 +7,39 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Playlist Section -->
-        <div class="playlist-section">
-            <h2>Danh sách phát</h2>
-            <div class="playlists">
-                <!-- Danh sách phát mẫu -->
-                <div class="playlist">
-                    <h3>Danh sách phát 1</h3>
-                    <ul>
-                        <li>Bài hát 1</li>
-                        <li>Bài hát 2</li>
-                        <li>Bài hát 3</li>
-                    </ul>
+    <div class="player-container">
+        <header class="player-header">
+            <h1>CỘNG ĐỒNG KHONHACDJ...</h1>
+            <button class="search-button">🔍</button>
+        </header>
+        <ul class="playlist">
+            <li class="playlist-item">
+                <button class="play-button">▶️</button>
+                <div class="song-info">
+                    <span class="song-title">03A - HV - Dung Quen Ten Anh HD VM [Po...</span>
+                    <span class="song-artist">Unknown artist</span>
                 </div>
-                <div class="playlist">
-                    <h3>Danh sách phát 2</h3>
-                    <ul>
-                        <li>Bài hát A</li>
-                        <li>Bài hát B</li>
-                        <li>Bài hát C</li>
-                    </ul>
-                </div>
+                <button class="download-button">⬇️</button>
+            </li>
+            <!-- Repeat similar structure for other songs -->
+        </ul>
+        <div class="current-song">
+            <span class="current-song-title">Boy Lê Bảo - Lê Bảo x Datmyn.mp3</span>
+            <span class="current-song-artist">Unknown artist</span>
+            <div class="progress-container">
+                <span class="current-time">1:00:34</span>
+                <input type="range" class="progress-bar" value="50">
+                <span class="duration">1:52:51</span>
             </div>
-        </div>
-
-        <!-- Player Control Section -->
-        <div class="player-section">
             <div class="controls">
-                <button class="prev">⏮️</button>
-                <button class="play">▶️</button>
-                <button class="pause" style="display: none;">⏸️</button>
-                <button class="next">⏭️</button>
-            </div>
-            <div class="volume">
-                <input type="range" min="0" max="100" value="50" class="volume-slider">
-            </div>
-            <div class="shuffle-repeat">
-                <button class="shuffle">🔀</button>
-                <button class="repeat">🔁</button>
-            </div>
-            <div class="track-info">
-                <span class="current-time">0:00</span> / <span class="duration">0:00</span>
+                <button class="control-button">🔁</button>
+                <button class="control-button">⏮️</button>
+                <button class="control-button">⏸️</button>
+                <button class="control-button">⏭️</button>
+                <button class="control-button">⋮</button>
             </div>
         </div>
     </div>
-
     <script src="script.js"></script>
 </body>
     </html>
